@@ -9,6 +9,8 @@ export default function Ipctobns() {
     const [bns, setBns] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [crpcData, setCrpcData] = useState(null);
+    const [bnss, setBnss] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +23,9 @@ export default function Ipctobns() {
         setLoading(true);
         setError("");
         setBns(null);
+        setIpcData(null);
+        setCrpcData(null);
+        setBnss(null);
 
         try {
             const { data } = await axios.post("/api/ipctobns", { ipc });
@@ -31,8 +36,19 @@ export default function Ipctobns() {
             }
 
             console.log(data);
-            setBns(data.closestMatch);
-            setIpcData(data.ipcData)
+            setBns(data.bnsMatches[0]);
+            setIpcData(data.ipcSection)
+
+            const {data:bnss} = await axios.post("/api/crpctobnss", { ipc });
+            console.log(bnss.isExactMatch);
+            if(!bnss.isExactMatch){
+                console.log(bnss);
+                return
+            }
+
+
+            setCrpcData(bnss.crpcData);
+            setBnss(bnss.bnssData.matches[0]);
 
         } catch (error) {
             console.error(error);
@@ -70,6 +86,40 @@ export default function Ipctobns() {
             {loading && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
             {/*create a table for showing ipc section and bns section */}
+
+            {crpcData && (
+                <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">
+                    <h2 className="text-xl font-bold mb-4">Comparison between CRPC and BNSS</h2>
+                    {/*<p><span className="font-semibold">{crpcData.section_title} :</span> {crpcData.section_desc}</p>*/}
+                    {/*<hr className="my-4" />*/}
+                    <table className="table-auto m-auto">
+                        <thead>
+                        <tr>
+                            <th className="px-4 py-2">CRPC Section </th>
+                            <th className="px-4 py-2">BNSS Section </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td className="border px-4 py-2">{crpcData.section}</td>
+                            <td className="border px-4 py-2">{bnss.section}</td>
+
+                        </tr>
+                        <tr>
+                            <td className="border px-4 py-2">{crpcData.section_title}</td>
+                            <td className="border px-4 py-2">{bnss.section_title}</td>
+
+                        </tr>
+                        <tr>
+                            <td className="border px-4 py-2">{crpcData.section_desc}</td>
+                            <td className="border px-4 py-2">{crpcData.section_desc}</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )}
 
             {bns && (
                 <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">

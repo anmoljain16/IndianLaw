@@ -23,6 +23,7 @@
     "leven": "^4.0.0",
     "lucide-react": "^0.394.0",
     "mongoose": "^8.4.1",
+    "natural": "^7.0.6",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
