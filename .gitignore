@@ -35,3 +35,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/src/app/api/hello/bns.json
+/src/app/api/hello/BNSS.json
+/src/app/api/hello/CRPC.json
+/CRPC.json
+/src/app/api/hello/ipc.json
+/.idea/jsLibraryMappings.xml
