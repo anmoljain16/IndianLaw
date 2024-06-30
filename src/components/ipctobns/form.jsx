@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
 import axios from "axios";
 
 export default function Ipctobns() {
@@ -14,6 +14,11 @@ export default function Ipctobns() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // validate the input
+
+
+
 
         if (!ipc) {
             setError("Please enter the IPC section");
@@ -72,6 +77,7 @@ export default function Ipctobns() {
                         name="ipc"
                         onChange={(e) => setIpc(e.target.value)}
                         value={ipc}
+                        placeholder="Enter IPC section Eg: 300, 304, 376 etc."
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     />
                 </div>
@@ -89,10 +95,10 @@ export default function Ipctobns() {
 
             {crpcData && (
                 <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">
-                    <h2 className="text-xl font-bold mb-4">Comparison between CRPC and BNSS</h2>
+                    {/*<h2 className="text-xl font-bold mb-4">Comparison between CRPC and BNSS</h2>*/}
                     {/*<p><span className="font-semibold">{crpcData.section_title} :</span> {crpcData.section_desc}</p>*/}
                     {/*<hr className="my-4" />*/}
-                    <table className="table-auto m-auto">
+                    <table className="table-auto ">
                         <thead>
                         <tr>
                             <th className="px-4 py-2">CRPC Section </th>
@@ -111,11 +117,11 @@ export default function Ipctobns() {
                             <td className="border px-4 py-2">{bnss.section_title}</td>
 
                         </tr>
-                        <tr>
-                            <td className="border px-4 py-2">{crpcData.section_desc}</td>
-                            <td className="border px-4 py-2">{crpcData.section_desc}</td>
+                        {/*<tr>*/}
+                        {/*    <td className="border px-4 py-2">{crpcData.section_desc}</td>*/}
+                        {/*    <td className="border px-4 py-2">{crpcData.section_desc}</td>*/}
 
-                        </tr>
+                        {/*</tr>*/}
                         </tbody>
                     </table>
                 </div>
@@ -123,10 +129,10 @@ export default function Ipctobns() {
 
             {bns && (
                 <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">
-                    <h2 className="text-xl font-bold mb-4">Comparison between IPC and BNS</h2>
+                    {/*<h2 className="text-xl font-bold mb-4">Comparison between IPC and BNS</h2>*/}
                     {/*<p><span className="font-semibold">{bns.sectionTitle} :</span> {bns.sectionDescription}</p>*/}
                     {/*<hr className="my-4" />*/}
-                    <table className="table-auto m-auto">
+                    <table className="table-auto ">
                         <thead>
                         <tr>
                             <th className="px-4 py-2">IPC Section </th>
@@ -145,11 +151,11 @@ export default function Ipctobns() {
                             <td className="border px-4 py-2">{bns.sectionTitle}</td>
 
                         </tr>
-                        <tr>
-                            <td className="border px-4 py-2">{ipcData.sectionDescription}</td>
-                            <td className="border px-4 py-2">{bns.sectionDescription}</td>
+                        {/*<tr>*/}
+                        {/*    <td className="border px-4 py-2">{ipcData.sectionDescription}</td>*/}
+                        {/*    <td className="border px-4 py-2">{bns.sectionDescription}</td>*/}
 
-                        </tr>
+                        {/*</tr>*/}
                         </tbody>
                     </table>
                 </div>
@@ -175,6 +181,26 @@ export default function Ipctobns() {
                     <p><span className="font-semibold">Section Description:</span> {ipcData.sectionDescription}</p>
                 </div>
             )}
+            {
+                bnss && (
+                    <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">
+                        <h2 className="text-xl font-bold mb-4">BNSS Section Details</h2>
+                        <p><span className="font-semibold">BNSS Section Number:</span> {bnss.section}</p>
+                        <p><span className="font-semibold">Section Title:</span> {bnss.section_title}</p>
+                        <p><span className="font-semibold">Section Description:</span> {crpcData.section_desc}</p>
+                    </div>
+                )
+            }
+            {
+                crpcData && (
+                    <div className="mt-8 p-4 border border-gray-300 rounded-md shadow-md">
+                        <h2 className="text-xl font-bold mb-4">CRPC Section Details</h2>
+                        <p><span className="font-semibold">CRPC Section Number:</span> {crpcData.section}</p>
+                        <p><span className="font-semibold">Section Title:</span> {crpcData.section_title}</p>
+                        <p><span className="font-semibold">Section Description:</span> {crpcData.section_desc}</p>
+                    </div>
+                )
+            }
         </div>
     );
 }
