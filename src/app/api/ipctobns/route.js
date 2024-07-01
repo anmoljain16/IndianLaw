@@ -14,13 +14,9 @@ const cleanText = (text) => {
 };
 
 // Function to fetch and process IPC data
-const fetchIpcData = async (ipc) => {
-    const ipcData = await IpcModel.findOne({ sectionNo: ipc });
-    if (!ipcData) {
-        throw new Error("IPC section not found");
-    }
+const fetchIpcData = async (ipcData) => {
     const ipcText = cleanText(`${ipcData.sectionTitle} ${ipcData.sectionDescription}`);
-    return { ipcData, ipcWords: ipcText.split(' ') };
+    return { ipcWords: ipcText.split(' ') };
 };
 
 // Function to find BNS matches
@@ -28,13 +24,13 @@ const findBnsMatches = async (ipcWords) => {
     return BnsModel.aggregate([
         {
             $addFields: {
-                combinedText: {$concat: ["$sectionTitle", " ", "$sectionDescription"]}
+                combinedText: { $concat: ["$sectionTitle", " ", "$sectionDescription"] }
             }
         },
         {
             $match: {
                 $or: ipcWords.map(word => ({
-                    combinedText: {$regex: word, $options: 'i'}
+                    combinedText: { $regex: word, $options: 'i' }
                 }))
             }
         },
@@ -49,7 +45,7 @@ const findBnsMatches = async (ipcWords) => {
                                 "$$value",
                                 {
                                     $cond: [
-                                        {$regexMatch: {input: "$combinedText", regex: "$$this", options: "i"}},
+                                        { $regexMatch: { input: "$combinedText", regex: "$$this", options: "i" } },
                                         1,
                                         0
                                     ]
@@ -60,8 +56,8 @@ const findBnsMatches = async (ipcWords) => {
                 }
             }
         },
-        {$sort: {matchScore: -1}},
-        {$limit: 5}
+        { $sort: { matchScore: -1 } },
+        { $limit: 5 }
     ]);
 };
 
@@ -70,8 +66,13 @@ export async function POST(req) {
         await Connect();
         const { ipc } = await req.json();
 
+        const ipcData = await IpcModel.findOne({ sectionNo: ipc });
+        if (!ipcData) {
+            return new Response(JSON.stringify({ error: "IPC section not found" }), { status: 404 });
+        }
+
         // Fetch and process IPC data
-        const { ipcData, ipcWords } = await fetchIpcData(ipc);
+        const { ipcWords } = await fetchIpcData(ipcData);
 
         // Find BNS matches
         const bnsMatches = await findBnsMatches(ipcWords);
