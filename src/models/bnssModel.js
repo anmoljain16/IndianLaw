@@ -13,6 +13,10 @@ const bnssSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    section_description: {
+        type: String,
+    },
+
 
 });
 
