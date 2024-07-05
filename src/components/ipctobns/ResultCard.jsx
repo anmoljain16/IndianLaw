@@ -44,6 +44,8 @@ export default function ResultCard({ title, data, variants }) {
                         <p><span className="font-semibold">Section Number:</span> {data.sectionNo || data.section}</p>
                         <p><span className="font-semibold">Title:</span> {data.sectionTitle || data.section_title}</p>
                         <p><span className="font-semibold">Description:</span> {data.sectionDescription || data.section_desc}</p>
+                    {/*    a button for translating sectiondescription into hindi*/}
+
                     </div>
                 </motion.div>
             </AnimatePresence>

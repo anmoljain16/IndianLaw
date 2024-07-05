@@ -46,7 +46,7 @@ export default function ErrorDisplay({ error, onDismiss }) {
             >
                 <AlertTriangle className="mr-3 flex-shrink-0" />
                 <div className="flex-grow">
-                    <p className="font-bold">Error</p>
+                    <p className="font-bold">Not Found!</p>
                     <p>{error}</p>
                 </div>
                 <div className="ml-3 flex-shrink-0 flex items-center">

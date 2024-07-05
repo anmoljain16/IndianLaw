@@ -1,0 +1,678 @@
+[
+  {
+    "id": 1,
+    "text": "Short title, application and commencement."
+  },
+  {
+    "id": 2,
+    "text": "Definitions. (Change)"
+  },
+  {
+    "id": 4,
+    "text": "Relevancy of facts forming part of same transaction. (Change)"
+  },
+  {
+    "id": 5,
+    "text": "Facts which are occasion, cause or effect of facts in issue or relevant facts."
+  },
+  {
+    "id": 6,
+    "text": "Motive, preparation and previous or subsequent conduct."
+  },
+  {
+    "id": 7,
+    "text": "Facts necessary to explain or introduce fact in issue or relevant facts."
+  },
+  {
+    "id": 8,
+    "text": "Things said or done by conspirator in reference to common design."
+  },
+  {
+    "id": 9,
+    "text": "When facts not otherwise relevant become relevant."
+  },
+  {
+    "id": 10,
+    "text": "Facts tending to enable Court to determine amount are relevant in suits for damages."
+  },
+  {
+    "id": 11,
+    "text": "Facts relevant when right or custom is in question."
+  },
+  {
+    "id": 12,
+    "text": "Facts showing existence of state of mind, or of body or bodily feeling."
+  },
+  {
+    "id": 13,
+    "text": "Facts bearing on question whether act was accidental or intentional."
+  },
+  {
+    "id": 14,
+    "text": "Existence of course of business when relevant."
+  },
+  {
+    "id": 15,
+    "text": "Admission defined."
+  },
+  {
+    "id": 16,
+    "text": "Admission by party to proceeding or his agent."
+  },
+  {
+    "id": 17,
+    "text": "Admissions by persons whose position must be proved as against party to suit."
+  },
+  {
+    "id": 18,
+    "text": "Admissions by persons expressly referred to by party to suit."
+  },
+  {
+    "id": 19,
+    "text": "Proof of admissions against persons making them, and by or on their behalf."
+  },
+  {
+    "id": 20,
+    "text": "When oral admissions as to contents of documents are relevant."
+  },
+  {
+    "id": 21,
+    "text": "Admissions in civil cases when relevant."
+  },
+  {
+    "id": 22,
+    "text": "Confession caused by inducement, threat, coercion or promise, when irrelevant in criminal proceeding.(Change)"
+  },
+  {
+    "id": 23,
+    "text": "Confession to police officer."
+  },
+  {
+    "id": 24,
+    "text": "Consideration of proved confession affecting person making it and others jointly under trial for same offence. (Change)"
+  },
+  {
+    "id": 25,
+    "text": "Admissions not conclusive proof, but may estop."
+  },
+  {
+    "id": 26,
+    "text": "Cases in which statement of relevant fact by person who is dead or cannot be found, etc., is relevant. (Change)"
+  },
+  {
+    "id": 27,
+    "text": "Relevancy of certain evidence for proving, in subsequent proceeding, truth of facts therein stated."
+  },
+  {
+    "id": 28,
+    "text": "Entries in books of account when relevant."
+  },
+  {
+    "id": 29,
+    "text": "Relevancy of entry in public record or an electronic record made in performance of duty."
+  },
+  {
+    "id": 30,
+    "text": "Relevancy of statements in maps, charts and plans."
+  },
+  {
+    "id": 31,
+    "text": "Relevancy of statement as to fact of public nature contained in certain Acts or notifications. (Change)"
+  },
+  {
+    "id": 32,
+    "text": "Relevancy of statements as to any law contained in law books including electronic or digital form. (Change)"
+  },
+  {
+    "id": 33,
+    "text": "What evidence to be given when statement forms part of a conversation, document, electronic record, book or series of letters or papers."
+  },
+  {
+    "id": 34,
+    "text": "Previous judgments relevant to bar a second suit or trial."
+  },
+  {
+    "id": 35,
+    "text": "Relevancy of certain judgments in probate, etc., jurisdiction. (Change)"
+  },
+  {
+    "id": 36,
+    "text": "Relevancy and effect of judgments, orders or decrees, other than those mentioned in section 35."
+  },
+  {
+    "id": 37,
+    "text": "Judgments, etc., other than those mentioned in sections 34, 35 and 36 when relevant."
+  },
+  {
+    "id": 38,
+    "text": "Fraud or collusion in obtaining judgment, or incompetency of Court, may be proved."
+  },
+  {
+    "id": 39,
+    "text": "Opinions of experts. (Change)"
+  },
+  {
+    "id": 40,
+    "text": "Facts bearing upon opinions of experts."
+  },
+  {
+    "id": 41,
+    "text": "Opinion as to handwriting and signature, when relevant."
+  },
+  {
+    "id": 42,
+    "text": "Opinion as to existence of general custom or right, when relevant."
+  },
+  {
+    "id": 43,
+    "text": "Opinion as to usages, tenets, etc., when relevant."
+  },
+  {
+    "id": 44,
+    "text": "Opinion on relationship, when relevant."
+  },
+  {
+    "id": 45,
+    "text": "Grounds of opinion, when relevant."
+  },
+  {
+    "id": 46,
+    "text": "In civil cases character to prove conduct imputed, irrelevant."
+  },
+  {
+    "id": 47,
+    "text": "In criminal cases previous good character relevant."
+  },
+  {
+    "id": 48,
+    "text": "Evidence of character or previous sexual experience not relevant in certain cases."
+  },
+  {
+    "id": 49,
+    "text": "Previous bad character not relevant, except in reply."
+  },
+  {
+    "id": 50,
+    "text": "Character as affecting damages."
+  },
+  {
+    "id": 51,
+    "text": "Fact judicially noticeable need not be proved."
+  },
+  {
+    "id": 52,
+    "text": "Facts of which Court shall take judicial notice.(Change)"
+  },
+  {
+    "id": 53,
+    "text": "Facts admitted need not be proved."
+  },
+  {
+    "id": 54,
+    "text": "Proof of facts by oral evidence.(Change)"
+  },
+  {
+    "id": 55,
+    "text": "Oral evidence to be direct."
+  },
+  {
+    "id": 56,
+    "text": "Proof of contents of documents."
+  },
+  {
+    "id": 57,
+    "text": "Primary evidence.(Change)"
+  },
+  {
+    "id": 58,
+    "text": "Secondary evidence.(Change)"
+  },
+  {
+    "id": 59,
+    "text": "Proof of documents by primary evidence."
+  },
+  {
+    "id": 60,
+    "text": "Cases in which secondary evidence relating to documents may be given."
+  },
+  {
+    "id": 61,
+    "text": "Electronic or digital record.(New)"
+  },
+  {
+    "id": 62,
+    "text": "Special provisions as to evidence relating to electronic record."
+  },
+  {
+    "id": 63,
+    "text": "Admissibility of electronic records.(Change)"
+  },
+  {
+    "id": 64,
+    "text": "Rules as to notice to produce.(Change)"
+  },
+  {
+    "id": 65,
+    "text": "Proof of signature and handwriting of person alleged to have signed or written document produced."
+  },
+  {
+    "id": 66,
+    "text": "Proof as to electronic signature."
+  },
+  {
+    "id": 67,
+    "text": "Proof of execution of document required by law to be attested."
+  },
+  {
+    "id": 68,
+    "text": "Proof where no attesting witness found."
+  },
+  {
+    "id": 69,
+    "text": "Admission of execution by party to attested document."
+  },
+  {
+    "id": 70,
+    "text": "Proof when attesting witness denies execution."
+  },
+  {
+    "id": 71,
+    "text": "Proof of document not required by law to be attested."
+  },
+  {
+    "id": 72,
+    "text": "Comparison of signature, writing or seal with others admitted or proved."
+  },
+  {
+    "id": 73,
+    "text": "Proof as to verification of digital signature."
+  },
+  {
+    "id": 74,
+    "text": "Public and private documents.(Change)"
+  },
+  {
+    "id": 75,
+    "text": "Certified copies of public documents."
+  },
+  {
+    "id": 76,
+    "text": "Proof of documents by production of certified copies."
+  },
+  {
+    "id": 77,
+    "text": "Proof of other official documents.(Change)"
+  },
+  {
+    "id": 78,
+    "text": "Presumption as to genuineness of certified copies."
+  },
+  {
+    "id": 79,
+    "text": "Presumption as to documents produced as record of evidence, etc."
+  },
+  {
+    "id": 80,
+    "text": "Presumption as to Gazettes, newspapers, and other documents."
+  },
+  {
+    "id": 81,
+    "text": "Presumption as to Gazettes in electronic or digital record.(Change)"
+  },
+  {
+    "id": 82,
+    "text": "Presumption as to maps or plans made by authority of Government."
+  },
+  {
+    "id": 83,
+    "text": "Presumption as to collections of laws and reports of decisions."
+  },
+  {
+    "id": 84,
+    "text": "Presumption as to powers-of-attorney."
+  },
+  {
+    "id": 85,
+    "text": "Presumption as to electronic agreements.(Change)"
+  },
+  {
+    "id": 86,
+    "text": "Presumption as to electronic records and electronic signatures."
+  },
+  {
+    "id": 87,
+    "text": "Presumption as to Electronic Signature Certificates."
+  },
+  {
+    "id": 88,
+    "text": "Presumption as to certified copies of foreign judicial records."
+  },
+  {
+    "id": 89,
+    "text": "Presumption as to books, maps and charts."
+  },
+  {
+    "id": 90,
+    "text": "Presumption as to electronic messages."
+  },
+  {
+    "id": 91,
+    "text": "Presumption as to due execution, etc., of documents not produced."
+  },
+  {
+    "id": 92,
+    "text": "Presumption as to documents thirty years old."
+  },
+  {
+    "id": 93,
+    "text": "Presumption as to electronic records five years old."
+  },
+  {
+    "id": 94,
+    "text": "Evidence of terms of contracts, grants and other dispositions of property reduced to form of document."
+  },
+  {
+    "id": 95,
+    "text": "Exclusion of evidence of oral agreement."
+  },
+  {
+    "id": 96,
+    "text": "Exclusion of evidence to explain or amend ambiguous document."
+  },
+  {
+    "id": 97,
+    "text": "Exclusion of evidence against application of document to existing facts."
+  },
+  {
+    "id": 98,
+    "text": "Evidence as to document unmeaning in reference to existing facts."
+  },
+  {
+    "id": 99,
+    "text": "Evidence as to application of language which can apply to one only of several persons."
+  },
+  {
+    "id": 100,
+    "text": "Evidence as to application of language to one of two sets of facts, to neither of which the whole correctly applies."
+  },
+  {
+    "id": 101,
+    "text": "Evidence as to meaning of illegible characters, etc.(Change)"
+  },
+  {
+    "id": 102,
+    "text": "Who may give evidence of agreement varying terms of document."
+  },
+  {
+    "id": 103,
+    "text": "Saving of provisions of Indian Succession Act relating to wills."
+  },
+  {
+    "id": 104,
+    "text": "Burden of proof."
+  },
+  {
+    "id": 105,
+    "text": "On whom burden of proof lies."
+  },
+  {
+    "id": 106,
+    "text": "Burden of proof as to particular fact."
+  },
+  {
+    "id": 107,
+    "text": "Burden of proving fact to be proved to make evidence admissible."
+  },
+  {
+    "id": 108,
+    "text": "Burden of proving that case of accused comes within exceptions."
+  },
+  {
+    "id": 109,
+    "text": "Burden of proving fact especially within knowledge."
+  },
+  {
+    "id": 110,
+    "text": "Burden of proving death of person known to have been alive within thirty years."
+  },
+  {
+    "id": 111,
+    "text": "Burden of proving that person is alive who has not been heard of for seven years."
+  },
+  {
+    "id": 112,
+    "text": "Burden of proof as to relationship in the cases of partners, landlord and tenant, principal and agent."
+  },
+  {
+    "id": 113,
+    "text": "Burden of proof as to ownership."
+  },
+  {
+    "id": 114,
+    "text": "Proof of good faith in transactions where one party is in relation of active confidence."
+  },
+  {
+    "id": 115,
+    "text": "Presumption as to certain offences."
+  },
+  {
+    "id": 116,
+    "text": "Birth during marriage, conclusive proof of legitimacy."
+  },
+  {
+    "id": 117,
+    "text": "Presumption as to abetment of suicide by a married woman."
+  },
+  {
+    "id": 118,
+    "text": "Presumption as to dowry death."
+  },
+  {
+    "id": 119,
+    "text": "Court may presume existence of certain facts."
+  },
+  {
+    "id": 120,
+    "text": "Presumption as to absence of consent in certain prosecution for rape.(Change)"
+  },
+  {
+    "id": 121,
+    "text": "Estoppel."
+  },
+  {
+    "id": 122,
+    "text": "Estoppel of tenant and of licensee of person in possession."
+  },
+  {
+    "id": 123,
+    "text": "Estoppel of acceptor of bill of exchange, bailee or licensee."
+  },
+  {
+    "id": 124,
+    "text": "Who may testify."
+  },
+  {
+    "id": 125,
+    "text": "Witness unable to communicate verbally."
+  },
+  {
+    "id": 126,
+    "text": "Competency of husband and wife as witnesses in certain cases."
+  },
+  {
+    "id": 127,
+    "text": "Judges and Magistrates."
+  },
+  {
+    "id": 128,
+    "text": "Communications during marriage."
+  },
+  {
+    "id": 129,
+    "text": "Evidence as to affairs of State."
+  },
+  {
+    "id": 130,
+    "text": "Official communications."
+  },
+  {
+    "id": 131,
+    "text": "Information as to commission of offences."
+  },
+  {
+    "id": 132,
+    "text": "Professional communications."
+  },
+  {
+    "id": 133,
+    "text": "Privilege not waived by volunteering evidence."
+  },
+  {
+    "id": 134,
+    "text": "Confidential communication with legal advisers."
+  },
+  {
+    "id": 135,
+    "text": "Production of title-deeds of witness not a party."
+  },
+  {
+    "id": 136,
+    "text": "Production of documents or electronic records which another person, having possession, could refuse to produce."
+  },
+  {
+    "id": 137,
+    "text": "Witness not excused from answering on ground that answer will criminate."
+  },
+  {
+    "id": 138,
+    "text": "Accomplice.(Change)"
+  },
+  {
+    "id": 139,
+    "text": "Number of witnesses."
+  },
+  {
+    "id": 140,
+    "text": "Order of production and examination of witnesses."
+  },
+  {
+    "id": 141,
+    "text": "Judge to decide as to admissibility of evidence."
+  },
+  {
+    "id": 142,
+    "text": "Examination of witnesses."
+  },
+  {
+    "id": 143,
+    "text": "Order of examinations."
+  },
+  {
+    "id": 144,
+    "text": "Cross-examination of person called to produce a document."
+  },
+  {
+    "id": 145,
+    "text": "Witnesses to character."
+  },
+  {
+    "id": 146,
+    "text": "Leading questions."
+  },
+  {
+    "id": 147,
+    "text": "Evidence as to matters in writing."
+  },
+  {
+    "id": 148,
+    "text": "Cross-examination as to previous statements in writing."
+  },
+  {
+    "id": 149,
+    "text": "Questions lawful in cross-examination."
+  },
+  {
+    "id": 150,
+    "text": "When witness to be compelled to answer."
+  },
+  {
+    "id": 151,
+    "text": "Court to decide when question shall be asked and when witness compelled to answer."
+  },
+  {
+    "id": 152,
+    "text": "Question not to be asked without reasonable grounds."
+  },
+  {
+    "id": 153,
+    "text": "Procedure of Court in case of question being asked without reasonable grounds."
+  },
+  {
+    "id": 154,
+    "text": "Indecent and scandalous questions."
+  },
+  {
+    "id": 155,
+    "text": "Questions intended to insult or annoy."
+  },
+  {
+    "id": 156,
+    "text": "Exclusion of evidence to contradict answers to questions testing veracity."
+  },
+  {
+    "id": 157,
+    "text": "Question by party to his own witness."
+  },
+  {
+    "id": 158,
+    "text": "Impeaching credit of witness."
+  },
+  {
+    "id": 159,
+    "text": "Questions tending to corroborate evidence of relevant fact, admissible."
+  },
+  {
+    "id": 160,
+    "text": "Former statements of witness may be proved to corroborate later testimony as to same fact."
+  },
+  {
+    "id": 161,
+    "text": "What matters may be proved in connection with proved statement relevant under section 26 or 27."
+  },
+  {
+    "id": 162,
+    "text": "Refreshing memory."
+  },
+  {
+    "id": 163,
+    "text": "Testimony to facts stated in document mentioned in section 162."
+  },
+  {
+    "id": 164,
+    "text": "Right of adverse party as to writing used to refresh memory."
+  },
+  {
+    "id": 165,
+    "text": "Production of documents.(Change)"
+  },
+  {
+    "id": 166,
+    "text": "Giving, as evidence, of document called for and produced on notice."
+  },
+  {
+    "id": 167,
+    "text": "Using, as evidence, of document production of which was refused on notice."
+  },
+  {
+    "id": 168,
+    "text": "Judge's power to put questions or order production.(Change)"
+  },
+  {
+    "id": 169,
+    "text": "No new trial for improper admission or rejection of evidence."
+  },
+  {
+    "id": 170,
+    "text": "Repeal and savings.(New)"
+  }
+]

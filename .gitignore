@@ -13,6 +13,7 @@
 /.next/
 /nodeDir/
 /out/
+/src/app/api/hello/
 
 # production
 /build

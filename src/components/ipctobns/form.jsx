@@ -24,18 +24,19 @@ const itemVariants = {
 export default function IPCtoBNSForm() {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(null);
-    const [errors, setErrors] = useState({ ipc: '', crpc: '' });
+    const [errors, setErrors] = useState({ ipc: '', crpc: '', iea: '' });
     const [loading, setLoading] = useState(false);
 
     const fetchData = useCallback(async (ipc) => {
         setLoading(true);
-        setErrors({ ipc: '', crpc: '' });
+        setErrors({ ipc: '', crpc: '', iea: '' });
         setResults(null);
 
         try {
-            const [ipcResponse, crpcResponse] = await Promise.allSettled([
+            const [ipcResponse, crpcResponse, ieaResponse] = await Promise.allSettled([
                 axios.post('/api/ipctobns', { ipc }),
                 axios.post('/api/crpctobnss', { ipc }),
+                axios.post('/api/ieatobsa', { iea: ipc }), // Using IPC as IEA for simplicity
             ]);
 
             let newResults = {};
@@ -51,7 +52,7 @@ export default function IPCtoBNSForm() {
                     newResults.bns = ipcData.bnsMatches[0];
                 }
             } else {
-                setErrors(prev => ({ ...prev, ipc: 'Failed to fetch IPC/BNS data' }));
+                setErrors(prev => ({ ...prev, ipc: 'IPC/BNS data not found' }));
             }
 
             if (crpcResponse.status === 'fulfilled') {
@@ -63,7 +64,19 @@ export default function IPCtoBNSForm() {
                     setErrors(prev => ({ ...prev, crpc: 'No exact match found for CRPC/BNSS' }));
                 }
             } else {
-                setErrors(prev => ({ ...prev, crpc: 'Failed to fetch CRPC/BNSS data' }));
+                setErrors(prev => ({ ...prev, crpc: 'CRPC/BNSS data not found' }));
+            }
+
+            if (ieaResponse.status === 'fulfilled') {
+                const ieaData = ieaResponse.value.data;
+                if (ieaData.isExactMatch) {
+                    newResults.iea = ieaData.ieaData;
+                    newResults.bsa = ieaData.bsaMatches[0];
+                } else {
+                    setErrors(prev => ({ ...prev, iea: 'No exact match found for IEA/BSA' }));
+                }
+            } else {
+                setErrors(prev => ({ ...prev, iea: 'IEA/BSA data not found' }));
             }
 
             if (Object.keys(newResults).length > 0) {
@@ -72,7 +85,7 @@ export default function IPCtoBNSForm() {
 
         } catch (error) {
             console.error('Error fetching data:', error);
-            setErrors({ ipc: 'An unexpected error occurred', crpc: 'An unexpected error occurred' });
+            setErrors({ ipc: 'An unexpected error occurred', crpc: 'An unexpected error occurred', iea: 'An unexpected error occurred' });
         } finally {
             setLoading(false);
         }
@@ -85,7 +98,7 @@ export default function IPCtoBNSForm() {
         if (term.trim() !== '') {
             debouncedFetchData(term.trim());
         } else {
-            setErrors({ ipc: 'Please enter a valid IPC section', crpc: '' });
+            setErrors({ ipc: 'Please enter a valid section number', crpc: '', iea: '' });
         }
     };
 
@@ -94,9 +107,9 @@ export default function IPCtoBNSForm() {
     }, []);
 
     useEffect(() => {
-        if (errors.ipc || errors.crpc) {
+        if (errors.ipc || errors.crpc || errors.iea) {
             const timer = setTimeout(() => {
-                setErrors({ ipc: '', crpc: '' });
+                setErrors({ ipc: '', crpc: '', iea: '' });
             }, 5000);
 
             return () => clearTimeout(timer);
@@ -105,15 +118,16 @@ export default function IPCtoBNSForm() {
 
     return (
         <div className="container mx-auto p-4 max-w-4xl">
-            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">IPC to BNS Converter</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Law Section Converter</h1>
             <p className="mb-8 text-center text-gray-600">
-                Enter an IPC section to get corresponding BNS, CRPC, and BNSS information
+                Enter a section number to get corresponding information for IPC/BNS, CRPC/BNSS, and IEA/BSA
             </p>
 
             <SearchForm onSearch={handleSearch} />
 
             {errors.ipc && <ErrorDisplay error={errors.ipc} onDismiss={() => handleDismissError('ipc')} />}
             {errors.crpc && <ErrorDisplay error={errors.crpc} onDismiss={() => handleDismissError('crpc')} />}
+            {errors.iea && <ErrorDisplay error={errors.iea} onDismiss={() => handleDismissError('iea')} />}
 
             {loading && <LoadingSpinner />}
 
@@ -129,6 +143,8 @@ export default function IPCtoBNSForm() {
                             bnsData={results.bns}
                             crpcData={results.crpc}
                             bnssData={results.bnss}
+                            ieaData={results.iea}
+                            bsaData={results.bsa}
                         />
                     </motion.div>
                     <motion.div
@@ -141,6 +157,8 @@ export default function IPCtoBNSForm() {
                         {results.bns && <ResultCard title="BNS Section" data={results.bns} variants={itemVariants}/>}
                         {results.crpc && <ResultCard title="CRPC Section" data={results.crpc} variants={itemVariants}/>}
                         {results.bnss && <ResultCard title="BNSS Section" data={results.bnss} variants={itemVariants}/>}
+                        {results.iea && <ResultCard title="IEA Section" data={results.iea} variants={itemVariants}/>}
+                        {results.bsa && <ResultCard title="BSA Section" data={results.bsa} variants={itemVariants}/>}
                     </motion.div>
                 </>
             )}

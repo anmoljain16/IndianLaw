@@ -1,4 +1,3 @@
-
 import Connect from "@/database/connect";
 import fs from "fs/promises";
 import path from "path";
@@ -6,7 +5,7 @@ import path from "path";
 export async function GET() {
     try {
         // Resolve the path to the IPC JSON file
-        const ipcFilePath = path.resolve(process.cwd(), "C:/NextJs/indianlaw/src/app/api/hello/CRPC.json");
+        const ipcFilePath = path.resolve(process.cwd(), "C:/NextJs/indianlaw/src/app/api/hello/BSA.json");
         const ipcData = JSON.parse(await fs.readFile(ipcFilePath, "utf-8"));
         console.log("IPC data read successfully");
 
@@ -20,32 +19,25 @@ export async function GET() {
         await Promise.all(ipcData.map(async (section) => {
             try {
                 // console.log(section)
-                const sectionNo = section.section || '';
-                const subSectionTitle = section.subSectionTitle || '';
-                const sectionTitle = section.sectionTitle || '';
-                const sectionDesc = section.sectionDesc || section.subSectionDesc || '';
+                // const sectionNo = section.section || '';
+                // const subSectionTitle = section.subSectionTitle || '';
+                // const sectionTitle = section.sectionTitle || '';
+                // const sectionDesc = section.sectionDesc || section.subSectionDesc || '';
 
-                const combinedData = (sectionTitle + " " + sectionDesc + " " + subSectionTitle)
-                    .replace(/[^\w\s]|[\n\r]|\(\w+\)/g, '')
-                    .toLowerCase()
+                // const combinedData = (sectionTitle + " " + sectionDesc + " " + subSectionTitle)
+                //     .replace(/[^\w\s]|[\n\r]|\(\w+\)/g, '')
+                //     .toLowerCase()
 
-                successfullySaved.push({
-                    sectionNo: sectionNo,
-                    subsectionTitle: subSectionTitle,
-                    sectionTitle: sectionTitle,
-                    sectionDescription: sectionDesc,
-                    combinedData: combinedData
-                });
 
-                // const result = await BnsModel.create({
-                //     sectionNo: sectionNo,
-                //     subsectionTitle: subSectionTitle,
-                //     sectionTitle: sectionTitle,
-                //     sectionDescription: sectionDesc,
-                //     combinedData: combinedData
+
+                // successfullySaved.push({
+                //     sectionNo: section.id,
+                //     subsectionTitle: section.text,
                 // });
-
-                // successfullySaved.push({ id: result._id, sectionNo: result.sectionNo });
+                //
+                //     const result = await BsaModel.find()
+                //
+                // successfullySaved.push(result);
 
                 // Uncomment and modify this line as per your database model to save the data
                 // const result = await IpcModel.create(section);
