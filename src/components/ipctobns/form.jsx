@@ -1,6 +1,6 @@
 "use client";
 
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
 import {motion} from 'framer-motion';
 import {debounce} from 'lodash';
@@ -24,46 +24,55 @@ const itemVariants = {
 export default function IPCtoBNSForm() {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(null);
-    const [error, setError] = useState('');
+    const [errors, setErrors] = useState({ ipc: '', crpc: '' });
     const [loading, setLoading] = useState(false);
 
     const fetchData = useCallback(async (ipc) => {
         setLoading(true);
-        setError('');
+        setErrors({ ipc: '', crpc: '' });
         setResults(null);
 
         try {
-            const [ipcResponse, crpcResponse] = await Promise.all([
+            const [ipcResponse, crpcResponse] = await Promise.allSettled([
                 axios.post('/api/ipctobns', { ipc }),
                 axios.post('/api/crpctobnss', { ipc }),
             ]);
 
-            const ipcData = ipcResponse.data;
-            const crpcData = crpcResponse.data;
-            console.log('ipcData:', ipcData);
-            if (ipcData.error) throw new Error(ipcData.error);
+            let newResults = {};
 
-            if (!ipcData.bnsMatches || ipcData.bnsMatches.length === 0) {
-                throw new Error('No matching BNS section found');
+            if (ipcResponse.status === 'fulfilled') {
+                const ipcData = ipcResponse.value.data;
+                if (ipcData.error) {
+                    setErrors(prev => ({ ...prev, ipc: ipcData.error }));
+                } else if (!ipcData.bnsMatches || ipcData.bnsMatches.length === 0) {
+                    setErrors(prev => ({ ...prev, ipc: 'No matching BNS section found' }));
+                } else {
+                    newResults.ipc = ipcData.ipcSection;
+                    newResults.bns = ipcData.bnsMatches[0];
+                }
+            } else {
+                setErrors(prev => ({ ...prev, ipc: 'Failed to fetch IPC/BNS data' }));
             }
 
-            setResults({
-                ipc: ipcData.ipcSection,
-                bns: ipcData.bnsMatches[0],
-                crpc: crpcData.isExactMatch ? crpcData.crpcData : null,
-                bnss: crpcData.isExactMatch ? crpcData.bnssMatches[0] : null,
-            });
+            if (crpcResponse.status === 'fulfilled') {
+                const crpcData = crpcResponse.value.data;
+                if (crpcData.isExactMatch) {
+                    newResults.crpc = crpcData.crpcData;
+                    newResults.bnss = crpcData.bnssMatches[0];
+                } else {
+                    setErrors(prev => ({ ...prev, crpc: 'No exact match found for CRPC/BNSS' }));
+                }
+            } else {
+                setErrors(prev => ({ ...prev, crpc: 'Failed to fetch CRPC/BNSS data' }));
+            }
 
+            if (Object.keys(newResults).length > 0) {
+                setResults(newResults);
+            }
 
         } catch (error) {
-            if (axios.isAxiosError(error)) {
-                setError(error.message || 'Network error occurred. Please try again.');
-            } else if (error instanceof Error) {
-                setError(error.message);
-            } else {
-                setError('An unexpected error occurred. Please try again.');
-            }
             console.error('Error fetching data:', error);
+            setErrors({ ipc: 'An unexpected error occurred', crpc: 'An unexpected error occurred' });
         } finally {
             setLoading(false);
         }
@@ -76,13 +85,23 @@ export default function IPCtoBNSForm() {
         if (term.trim() !== '') {
             debouncedFetchData(term.trim());
         } else {
-            setError('Please enter a valid IPC section');
+            setErrors({ ipc: 'Please enter a valid IPC section', crpc: '' });
         }
     };
 
-    const handleDismissError = () => {
-        setError('');
-    };
+    const handleDismissError = useCallback((errorType) => {
+        setErrors(prev => ({ ...prev, [errorType]: '' }));
+    }, []);
+
+    useEffect(() => {
+        if (errors.ipc || errors.crpc) {
+            const timer = setTimeout(() => {
+                setErrors({ ipc: '', crpc: '' });
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [errors]);
 
     return (
         <div className="container mx-auto p-4 max-w-4xl">
@@ -93,7 +112,8 @@ export default function IPCtoBNSForm() {
 
             <SearchForm onSearch={handleSearch} />
 
-            <ErrorDisplay error={error} onDismiss={handleDismissError} />
+            {errors.ipc && <ErrorDisplay error={errors.ipc} onDismiss={() => handleDismissError('ipc')} />}
+            {errors.crpc && <ErrorDisplay error={errors.crpc} onDismiss={() => handleDismissError('crpc')} />}
 
             {loading && <LoadingSpinner />}
 
@@ -117,17 +137,11 @@ export default function IPCtoBNSForm() {
                         animate="visible"
                         className="mt-8 space-y-4"
                     >
-                        <ResultCard title="IPC Section" data={results.ipc} variants={itemVariants}/>
-                        <ResultCard title="BNS Section" data={results.bns} variants={itemVariants}/>
-                        {results.crpc && (
-                            <ResultCard title="CRPC Section" data={results.crpc} variants={itemVariants}/>
-                        )}
-                        {results.bnss && (
-                            <ResultCard title="BNSS Section" data={results.bnss} variants={itemVariants}/>
-                        )}
+                        {results.ipc && <ResultCard title="IPC Section" data={results.ipc} variants={itemVariants}/>}
+                        {results.bns && <ResultCard title="BNS Section" data={results.bns} variants={itemVariants}/>}
+                        {results.crpc && <ResultCard title="CRPC Section" data={results.crpc} variants={itemVariants}/>}
+                        {results.bnss && <ResultCard title="BNSS Section" data={results.bnss} variants={itemVariants}/>}
                     </motion.div>
-
-
                 </>
             )}
         </div>
